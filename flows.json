@@ -1,0 +1,131 @@
+[
+    {
+        "id": "3cd8a984a8589cc6",
+        "type": "subflow",
+        "name": "cowsay",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "d0e428336f4b7c56"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 340,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "d0e428336f4b7c56",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {
+            "module": "node-red-contrib-cowsay1133",
+            "type": "cowsay",
+            "version": "0.0.1",
+            "author": "Kure",
+            "desc": "A node to generate ascii art using cowsay module",
+            "keywords": "nore-red, cowsay",
+            "license": "Apache-2.0"
+        },
+        "color": "#DDAA99"
+    },
+    {
+        "id": "d0e428336f4b7c56",
+        "type": "function",
+        "z": "3cd8a984a8589cc6",
+        "name": "function 1",
+        "func": "msg.payload = cowsay2.say(String(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "cowsay2",
+                "module": "cowsay2"
+            }
+        ],
+        "x": 200,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89fa1512706dc145",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a482bf77f7655f60",
+        "type": "inject",
+        "z": "89fa1512706dc145",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "c25120474968e7a5"
+            ]
+        ]
+    },
+    {
+        "id": "f4319a5efb19067a",
+        "type": "debug",
+        "z": "89fa1512706dc145",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c25120474968e7a5",
+        "type": "subflow:3cd8a984a8589cc6",
+        "z": "89fa1512706dc145",
+        "name": "",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "f4319a5efb19067a"
+            ]
+        ]
+    }
+]
